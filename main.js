@@ -9,3 +9,9 @@ const summarization = await pipeline(
     'summarization', // task
     'Xenova/t5-small' // model
 );
+
+generateButton.addEventListener('click', async () => {
+    const input = longTextInput.value;
+    const result = await summarization(input);
+    output.innerHTML = result[0].summary_text;
+});
