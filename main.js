@@ -13,7 +13,14 @@ const summarization = await pipeline(
 generateButton.removeAttribute('disabled');
 
 generateButton.addEventListener('click', async () => {
+    spinner.classList.add('show');
+    generateButton.setAttribute("disabled", true);
+
     const input = longTextInput.value;
     const result = await summarization(input);
+
     output.innerHTML = result[0].summary_text;
+    spinner.classList.remove('show');
+    generateButton.removeAttribute("disabled");
+    output.style.display = 'block';
 });
