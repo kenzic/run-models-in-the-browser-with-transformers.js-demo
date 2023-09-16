@@ -10,6 +10,8 @@ const summarization = await pipeline(
     'Xenova/t5-small' // model
 );
 
+generateButton.removeAttribute('disabled');
+
 generateButton.addEventListener('click', async () => {
     const input = longTextInput.value;
     const result = await summarization(input);
