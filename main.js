@@ -17,7 +17,9 @@ generateButton.addEventListener('click', async () => {
     generateButton.setAttribute("disabled", true);
 
     const input = longTextInput.value;
-    const result = await summarization(input);
+    const result = await summarization(input, {
+        min_length: 50, max_length: 250,
+    });
 
     output.innerHTML = result[0].summary_text;
     spinner.classList.remove('show');
